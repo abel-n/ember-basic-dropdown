@@ -277,7 +277,7 @@ export default class BasicDropdown extends Component<Args> {
   }
 
   _getDestinationId(): string {
-    let config = getOwner(this).resolveRegistration("config:environment");
+    let config = (getOwner(this) as any).resolveRegistration("config:environment");
 
     // This takes care of stripping this code out if not running tests
     if (macroCondition(isTesting())) {
@@ -290,7 +290,7 @@ export default class BasicDropdown extends Component<Args> {
         ) as any;
 
         return getRootElement.default().id;
-      } 
+      }
 
       let rootView = document.querySelector('#ember-testing > .ember-view');
         if (rootView) {
